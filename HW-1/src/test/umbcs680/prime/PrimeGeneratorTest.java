@@ -65,7 +65,7 @@ public class PrimeGeneratorTest{
     public void primeGenerateNeg5to8(){
         try{
             PrimeGenerator cut = new PrimeGenerator(-5, 8);
-            fail("From is greater than 1");
+            fail("From is less than 1");
         }
         catch(RuntimeException ex){
             assertEquals("Wrong input values: from=-5 to=8", ex.getMessage());
