@@ -60,14 +60,5 @@ public class SingletonPrimeGenerator {
         }
 	}
 	
-	public static void main(String[] args) {
-		SingletonPrimeGenerator inst = SingletonPrimeGenerator.getInstance(1,100);
-		inst.generatePrimes();
-		LinkedList<Long> primes = inst.getPrimes();
-		Iterator<Long> it = primes.iterator();
-		while(it.hasNext()) {
-			System.out.print(it.next() + ", ");
-		}
-		System.out.println("\n" + inst.getPrimes().size() + " primes are found.");
-	}	
+		
 }
