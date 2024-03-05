@@ -160,11 +160,5 @@ public class RoleBasedAccess {
 		this.user = changeUser;
 	}
 
-	public static void main(String[] args){
-		RoleBasedAccess cut = RoleBasedAccess.createGuestInstance("Guest", "password");
-		System.out.println(cut.getGuestPage());
-		System.out.println(cut.getPremiumPage());
-		System.out.println(cut.getAdminPage());
-		System.out.println(cut.logout());
-	}
+
 }
