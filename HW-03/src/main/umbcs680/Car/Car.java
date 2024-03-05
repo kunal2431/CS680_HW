@@ -37,15 +37,5 @@ public class Car {
 
 	public float getPrice(){ return this.price; }
 
-	public static void main(String[] args) {
-		Car inst = new Car("Mazda", "CX-5", 2021);
-		//If using static factory method:
-		//Car inst = createCar("Mazda", "CX-5", 2021);
-		String[] carInfo = {inst.getMake(),
-				inst.getModel(),
-				Integer.toString(inst.getYear())};
-		for (int i = 0; i < carInfo.length; i++) {
-			System.out.println(carInfo[i]);
-		}
-	}
+
 }
