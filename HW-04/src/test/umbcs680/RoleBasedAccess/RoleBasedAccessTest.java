@@ -1,6 +1,8 @@
 package umbcs680.RoleBasedAccess;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Disabled;
+import java.nio.file.AccessDeniedException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RoleBasedAccessTest{
@@ -9,43 +11,120 @@ public class RoleBasedAccessTest{
     //Test Case 1: Functional Test: Verify Guest user access
     public void verifyGuestRole(){
         RoleBasedAccess cut = RoleBasedAccess.createGuestInstance("Guest", "password");
-        assertEquals("Guest Page : Access Granted", cut.getGuestPage());
-        assertEquals("Premium Page : Access Denied", cut.getPremiumPage());
-        assertEquals("Admin Page : Access Denied", cut.getAdminPage());
-        assertEquals("Logged out", cut.logout());
+        try{
+            cut.getGuestPage();
+        }
+        catch (AccessDeniedException ex) {
+            assertNotEquals("Guest Page access Denied", ex.getMessage());
+        }
+        try{
+            cut.getPremiumPage();
+            fail("Premium Page access Denied");
+        }
+        catch (AccessDeniedException ex) {
+            assertEquals("Premium Page access Denied", ex.getMessage());
+        }
+        try{
+            cut.getAdminPage();
+            fail("Admin Page access Denied");
+        }
+        catch (AccessDeniedException ex) {
+            assertEquals("Admin Page access Denied", ex.getMessage());
+        }
     }
 
     @Test
     //Test Case 2: Functional Test: Verify PremiumUser access
     public void verifyPremiumUserRole(){
         RoleBasedAccess cut = RoleBasedAccess.createPremiumUserInstance("Premium", "pwd");
-        assertEquals("Guest Page : Access Granted", cut.getGuestPage());
-        assertEquals("Premium Page : Access Granted", cut.getPremiumPage());
-        assertEquals("Admin Page : Access Denied", cut.getAdminPage());
-        assertEquals("Logged out", cut.logout());
+        try{
+            cut.getGuestPage();
+        }
+        catch (AccessDeniedException ex) {
+            assertNotEquals("Guest Page access Denied", ex.getMessage());
+        }
+        try{
+            cut.getPremiumPage();
+        }
+        catch (AccessDeniedException ex) {
+            assertNotEquals("Premium Page access Denied", ex.getMessage());
+        }
+        try{
+            cut.getAdminPage();
+            fail("Admin Page access Denied");
+        }
+        catch (AccessDeniedException ex) {
+            assertEquals("Admin Page access Denied", ex.getMessage());
+        }
     }
 
     @Test
     //Test Case 3: Functional Test: Verify Admin user access
     public void verifyAdminRole(){
         RoleBasedAccess cut = RoleBasedAccess.createAdminInstance("admin", "adminpwd");
-        assertEquals("Guest Page : Access Granted", cut.getGuestPage());
-        assertEquals("Premium Page : Access Granted", cut.getPremiumPage());
-        assertEquals("Admin Page : Access Granted", cut.getAdminPage());
-        assertEquals("Logged out", cut.logout());
+        try{
+            cut.getGuestPage();
+        }
+        catch (AccessDeniedException ex) {
+            assertNotEquals("Guest Page access Denied", ex.getMessage());
+        }
+        try{
+            cut.getPremiumPage();
+        }
+        catch (AccessDeniedException ex) {
+            assertNotEquals("Premium Page access Denied", ex.getMessage());
+        }
+        try{
+            cut.getAdminPage();
+        }
+        catch (AccessDeniedException ex) {
+            assertNotEquals("Admin Page access Denied", ex.getMessage());
+        }
     }
 
     @Test
     //Test Case 4: Functional Test: Verify changeUser()
     public void verifyChangeUserRole(){
         RoleBasedAccess cut = RoleBasedAccess.createAdminInstance("admin", "adminpwd");
-        assertEquals("Guest Page : Access Granted", cut.getGuestPage());
-        assertEquals("Premium Page : Access Granted", cut.getPremiumPage());
-        assertEquals("Admin Page : Access Granted", cut.getAdminPage());
+        try{
+            cut.getGuestPage();
+        }
+        catch (AccessDeniedException ex) {
+            assertNotEquals("Guest Page access Denied", ex.getMessage());
+        }
+        try{
+            cut.getPremiumPage();
+        }
+        catch (AccessDeniedException ex) {
+            assertNotEquals("Premium Page access Denied", ex.getMessage());
+        }
+        try{
+            cut.getAdminPage();
+        }
+        catch (AccessDeniedException ex) {
+            assertNotEquals("Admin Page access Denied", ex.getMessage());
+        }
         cut.changeUser(Guest.getInstance());
-        assertEquals("Guest Page : Access Granted", cut.getGuestPage());
-        assertEquals("Premium Page : Access Denied", cut.getPremiumPage());
-        assertEquals("Admin Page : Access Denied", cut.getAdminPage());
+        try{
+            cut.getGuestPage();
+        }
+        catch (AccessDeniedException ex) {
+            assertNotEquals("Guest Page access Denied", ex.getMessage());
+        }
+        try{
+            cut.getPremiumPage();
+            fail("Premium Page access Denied");
+        }
+        catch (AccessDeniedException ex) {
+            assertEquals("Premium Page access Denied", ex.getMessage());
+        }
+        try{
+            cut.getAdminPage();
+            fail("Admin Page access Denied");
+        }
+        catch (AccessDeniedException ex) {
+            assertEquals("Admin Page access Denied", ex.getMessage());
+        }
     }
 
     @Test
