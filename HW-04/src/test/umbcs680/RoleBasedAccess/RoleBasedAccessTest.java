@@ -29,6 +29,7 @@ public class RoleBasedAccessTest{
             fail("Admin Page access Denied");
         }
         catch (AccessDeniedException ex) {
+            assertTrue(ex instanceof AccessDeniedException);
             assertEquals("Admin Page access Denied", ex.getMessage());
         }
     }
