@@ -1,8 +1,9 @@
 package umbcs680.RoleBasedAccess;
 
+import java.nio.file.AccessDeniedException;
+
 public interface state{
-	public String getGuestPage();
-	public String getPremiumPage();
-	public String getAdminPage();
-	public String logout();
+	public void getGuestPage() throws AccessDeniedException;
+	public void getPremiumPage() throws AccessDeniedException;
+	public void getAdminPage() throws AccessDeniedException;
 }
