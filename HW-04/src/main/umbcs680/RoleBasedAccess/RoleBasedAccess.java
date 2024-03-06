@@ -1,7 +1,7 @@
 package umbcs680.RoleBasedAccess;
 
+import java.nio.file.AccessDeniedException;
 import java.util.Objects;
-
 
 class Guest implements state{
 
@@ -20,25 +20,20 @@ class Guest implements state{
 		}
 	}
 	@Override
-	public String getGuestPage() {
-        return "Guest Page : Access Granted";
+	public void getGuestPage() throws AccessDeniedException{
+		// GuestPage()
 	}
 
 	@Override
-	public String getPremiumPage() {
-        return "Premium Page : Access Denied";
+	public void getPremiumPage() throws AccessDeniedException{
+		throw new AccessDeniedException("Premium Page access Denied");
 	}
 
 	@Override
-	public String getAdminPage() {
-		return "Admin Page : Access Denied";
+	public void getAdminPage() throws AccessDeniedException{
+		throw new AccessDeniedException("Admin Page access Denied");
 	}
 
-	@Override
-	public String logout() {
-		instance=null;
-		return "Logged out";
-	}
 }
 
 class PremiumUser implements state{
@@ -58,25 +53,20 @@ class PremiumUser implements state{
 		}
 	}
 	@Override
-	public String getGuestPage() {
-		return "Guest Page : Access Granted";
+	public void getGuestPage() throws AccessDeniedException{
+		// GuestPage();
 	}
 
 	@Override
-	public String getPremiumPage() {
-		return "Premium Page : Access Granted";
+	public void getPremiumPage() throws AccessDeniedException{
+		// PremiumPage()
 	}
 
 	@Override
-	public String getAdminPage() {
-		return "Admin Page : Access Denied";
+	public void getAdminPage() throws AccessDeniedException{
+		throw new AccessDeniedException("Admin Page access Denied");
 	}
 
-	@Override
-	public String logout() {
-		instance=null;
-		return "Logged out";
-	}
 }
 
 class Admin implements state{
@@ -96,25 +86,20 @@ class Admin implements state{
 		}
 	}
 	@Override
-	public String getGuestPage() {
-		return "Guest Page : Access Granted";
+	public void getGuestPage() throws AccessDeniedException{
+		// GuestPage()
 	}
 
 	@Override
-	public String getPremiumPage() {
-		return "Premium Page : Access Granted";
+	public void getPremiumPage() throws AccessDeniedException{
+		// PremiumPage()
 	}
 
 	@Override
-	public String getAdminPage() {
-		return "Admin Page : Access Granted";
+	public void getAdminPage() throws AccessDeniedException{
+		// AdminPage()
 	}
 
-	@Override
-	public String logout() {
-		instance=null;
-		return "Logged out";
-	}
 }
 
 public class RoleBasedAccess {
@@ -139,26 +124,21 @@ public class RoleBasedAccess {
 			return new RoleBasedAccess(username, password, Admin.getInstance());
 	}
 
-	public String getGuestPage() {
-		return user.getGuestPage();
+	public void getGuestPage() throws AccessDeniedException{
+		user.getGuestPage();
 	}
 
-	public String getPremiumPage() {
-		return user.getPremiumPage();
+	public void getPremiumPage() throws AccessDeniedException{
+		user.getPremiumPage();
 	}
 
-	public String getAdminPage() {
-		return user.getAdminPage();
+	public void getAdminPage() throws AccessDeniedException{
+		user.getAdminPage();
 	}
 
-	public String logout() {
-		return user.logout();
-	}
 
 	public void changeUser(state changeUser){
-		user.logout();
 		this.user = changeUser;
 	}
-
 
 }
