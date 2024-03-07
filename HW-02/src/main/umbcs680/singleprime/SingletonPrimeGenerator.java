@@ -29,9 +29,13 @@ public class SingletonPrimeGenerator {
 		}
 	}
 
-	//Using destroyInstance() only for performing JUnit Tests.
-	protected void destroyInstance(){
-		instance = null;
+	public void setRange(long from, long to){
+		if(from >= 1 && to > from){
+			this.from = from;
+			this.to = to;
+		}else{
+			throw new RuntimeException("Wrong input values: from=" + from + " to=" + to);
+		}
 	}
 	
 	public LinkedList<Long> getPrimes(){ return primes; };
