@@ -15,7 +15,6 @@ public class SingletonPrimeGeneratorTest{
         assertNotNull(cut);
         SingletonPrimeGenerator cut1 = SingletonPrimeGenerator.getInstance(1, 5);
         assertSame(cut, cut1);
-        cut1.destroyInstance();
     }
 
     @Test
@@ -24,10 +23,10 @@ public class SingletonPrimeGeneratorTest{
     public void SingletonPrimeGenerate1to15(){
         Long[] expected = {2L, 3L, 5L, 7L, 11L, 13L};
         SingletonPrimeGenerator cut = SingletonPrimeGenerator.getInstance(1, 15);
+        cut.setRange(1, 15);
         cut.generatePrimes();
         assertTrue(cut instanceof SingletonPrimeGenerator);
         assertArrayEquals(expected, cut.getPrimes().toArray());
-        cut.destroyInstance();
     }
 
     @Test
@@ -35,6 +34,7 @@ public class SingletonPrimeGeneratorTest{
     //Structural test: Check isPrime() method checks prime numbers correctly
     public void SingletonPrimeGenerate_isPrime(){
         SingletonPrimeGenerator cut = SingletonPrimeGenerator.getInstance(1, 1000);
+        cut.setRange(1, 1000);
         assertTrue(cut.isPrime(79L));
         assertTrue(cut.isPrime(157L));
         assertTrue(cut.isPrime(997L));
@@ -42,7 +42,6 @@ public class SingletonPrimeGeneratorTest{
         assertFalse(cut.isPrime(80L));
         assertFalse(cut.isPrime(158L));
         assertFalse(cut.isPrime(996L));
-        cut.destroyInstance();
     }
 
     @Test
@@ -50,6 +49,7 @@ public class SingletonPrimeGeneratorTest{
     //Functional test: Check prime generator produces prime numbers only using isPrime() method which is working as expected as tested in test case 3
     public void SingletonPrimeGenerate7to15(){
         SingletonPrimeGenerator cut = SingletonPrimeGenerator.getInstance(7, 15);
+        cut.setRange(7, 15);
         cut.generatePrimes();
         assertNotNull(cut.getPrimes().toArray());
         LinkedList<Long> actual = cut.getPrimes();
@@ -57,7 +57,6 @@ public class SingletonPrimeGeneratorTest{
         while(it.hasNext()) {
             assertTrue(cut.isPrime(it.next()));
         }
-        cut.destroyInstance();
     }
 
     @Test
@@ -66,6 +65,7 @@ public class SingletonPrimeGeneratorTest{
     public void SingletonPrimeGenerate6to1(){
         try{
             SingletonPrimeGenerator cut = SingletonPrimeGenerator.getInstance(6, 1);
+            cut.setRange(6, 1);
             fail("From is Greater than to");
         }
         catch(RuntimeException ex){
@@ -80,6 +80,7 @@ public class SingletonPrimeGeneratorTest{
     public void SingletonPrimeGenerateNeg5to8(){
         try{
             SingletonPrimeGenerator cut = SingletonPrimeGenerator.getInstance(-5, 8);
+            cut.setRange(-5, 8);
             fail("From is less than 1");
         }
         catch(RuntimeException ex){
