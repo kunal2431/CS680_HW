@@ -35,6 +35,7 @@ public class Directory extends FSElement{
     }
 
     public LinkedList<File> getFiles(){
+        files.clear();
         for(FSElement child: children ){
             if(child.isDirectory() == false){
                 this.files.add((File) child);
