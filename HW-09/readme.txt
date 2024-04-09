@@ -1,3 +1,0 @@
-HW-09 - Transportation Management | Composite design pattern
-
-This application serves as a transportation management application, allowing users to model and manage various modes(Directory) of transportation such as Land, Air, and Water. Each mode consists of sub-modes(SubDirectory) (Car, Truck, etc.), carriers(Files) (e.g., Tesla, Audi, etc.), and links (e.g., Audi_Link, Scania_Link). It enables Transportation organizations to manage their operations and optimize carrier utilization.
