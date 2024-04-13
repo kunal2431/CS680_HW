@@ -51,7 +51,7 @@ public class Car{
     }
 
     public int getDominationCount(){
-        return DominationCount;
+        return this.DominationCount;
     }
 
 }
