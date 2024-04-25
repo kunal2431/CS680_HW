@@ -9,7 +9,7 @@ public class CountingVisitor implements FSVisitor{
     private int fileNum = 0;
     private int linkNum = 0;
 
-    private LinkedList<File> num = new LinkedList<File>();
+    private LinkedList<Integer> num = new LinkedList<Integer>();
 
     public CountingVisitor(){}
 
