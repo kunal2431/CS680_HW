@@ -45,7 +45,7 @@ public class FSCommandTest{
     //Test Case 1: Functional Test: Verify Counting implementation
     public void verify_Counting(){
         Counting countCmd = new Counting(repo);
-        LinkedList<File> actual = countCmd.execute();
+        LinkedList<Integer> actual = countCmd.execute();
         int dirNum = actual.get(0);
         int fileNum = actual.get(1);
         int linkNum = actual.get(2);
