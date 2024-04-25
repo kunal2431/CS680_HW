@@ -4,7 +4,7 @@ import umbcs680.command.util.*;
 
 import java.util.LinkedList;
 
-public class FileSearch implements FSCommand{
+public class FileSearch implements FSCommand<File>{
 
     private FSElement fElement;
     private String fileName;
