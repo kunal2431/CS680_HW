@@ -4,7 +4,7 @@ import umbcs680.command.util.*;
 
 import java.util.LinkedList;
 
-public class Counting implements FSCommand{
+public class Counting implements FSCommand<Integer>{
 
     private FSElement fElement;
     public Counting(FSElement fElement){
@@ -12,7 +12,7 @@ public class Counting implements FSCommand{
     }
 
     @Override
-    public LinkedList<File> execute(){
+    public LinkedList<Integer> execute(){
         CountingVisitor visitor = new CountingVisitor();
         fElement.accept(visitor);
         return visitor.getCounting();
