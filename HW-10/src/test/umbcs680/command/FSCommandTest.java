@@ -46,9 +46,9 @@ public class FSCommandTest{
     public void verify_Counting(){
         Counting countCmd = new Counting(repo);
         LinkedList<File> actual = countCmd.execute();
-        int dirNum = actual.get(0).getSize();
-        int fileNum = actual.get(1).getSize();
-        int linkNum = actual.get(2).getSize();
+        int dirNum = actual.get(0);
+        int fileNum = actual.get(1);
+        int linkNum = actual.get(2);
         assertEquals(dirNum, 4);
         assertEquals(fileNum, 5);
         assertEquals(linkNum, 1);
