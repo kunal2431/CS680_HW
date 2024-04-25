@@ -2,7 +2,7 @@ package umbcs680.command.fs;
 
 import java.util.LinkedList;
 
-public interface FSCommand{
+public interface FSCommand<T>{
 
-    LinkedList<File> execute();
+    LinkedList<T> execute();
 }
