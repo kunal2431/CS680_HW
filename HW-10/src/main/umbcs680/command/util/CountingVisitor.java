@@ -40,10 +40,10 @@ public class CountingVisitor implements FSVisitor{
         return linkNum;
     }
 
-    public LinkedList<File> getCounting(){
-        num.add(new File(null, "null", dirNum, null));
-        num.add(new File(null, "null", fileNum, null));
-        num.add(new File(null, "null", linkNum, null));
+    public LinkedList<Integer> getCounting(){
+        num.add(dirNum);
+        num.add(fileNum);
+        num.add(linkNum);
         return num;
     }
 }
