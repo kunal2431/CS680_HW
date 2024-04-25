@@ -4,7 +4,7 @@ import umbcs680.command.util.*;
 
 import java.util.LinkedList;
 
-public class FileCrawling implements FSCommand{
+public class FileCrawling implements FSCommand<File>{
 
     private FSElement fElement;
 
