@@ -26,7 +26,7 @@ public class DirectoryTest{
     public static void setUpFS(){
         fs = TestFixtureInitializer.createFS();
         repo = fs.getRootDirs().getFirst();
-        src = repo.getSubDirectories().get(1);
+        src = repo.getSubDirectories().getFirst();
         main = src.getSubDirectories().getFirst();
         test = src.getSubDirectories().get(1);
         readme = repo.getFiles().getFirst();
