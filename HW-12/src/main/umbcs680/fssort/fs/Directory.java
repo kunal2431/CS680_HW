@@ -20,7 +20,6 @@ public class Directory extends FSElement{
     }
 
     public LinkedList<FSElement> getChildren(){
-        Collections.sort(this.children, new AlphabeticalComparator());
         return this.children;
     }
 
@@ -33,6 +32,7 @@ public class Directory extends FSElement{
     public void appendChild(FSElement child){
         this.children.add(child);
         child.setParent(this);
+        Collections.sort(this.children, new AlphabeticalComparator());
     }
 
     public int countChildren(){
@@ -47,7 +47,6 @@ public class Directory extends FSElement{
                 this.directories.addAll(((Directory) child).getSubDirectories());
             }
         }
-        Collections.sort(this.directories, new AlphabeticalComparator());
         return this.directories;
     }
 
@@ -64,7 +63,6 @@ public class Directory extends FSElement{
                 this.files.add((File) child);
             }
         }
-        Collections.sort(this.files, new AlphabeticalComparator());
         return this.files;
     }
 
@@ -101,7 +99,6 @@ public class Directory extends FSElement{
                 this.links.add((Link) child);
             }
         }
-        Collections.sort(this.links, new AlphabeticalComparator());
         return this.links;
     }
 
