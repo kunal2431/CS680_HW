@@ -25,8 +25,9 @@ public class Directory extends FSElement{
     }
 
     public LinkedList<FSElement> getChildren(Comparator<FSElement> policy){
-        Collections.sort(this.children, policy);
-        return this.children;
+        LinkedList<FSElement> children_Copy = this.getChildren();
+        Collections.sort(children_Copy, policy);
+        return children_Copy;
     }
 
     public void appendChild(FSElement child){
@@ -51,15 +52,9 @@ public class Directory extends FSElement{
     }
 
     public LinkedList<Directory> getSubDirectories(Comparator<FSElement> policy){
-        directories.clear();
-        for(FSElement child: children ){
-            if(child.isDirectory() == true){
-                this.directories.add((Directory) child);
-                this.directories.addAll(((Directory) child).getSubDirectories());
-            }
-        }
-        Collections.sort(this.directories, policy);
-        return this.directories;
+        LinkedList<Directory> directories_Copy = this.getSubDirectories();
+        Collections.sort(directories_Copy, policy);
+        return directories_Copy;
     }
 
     public LinkedList<File> getFiles(){
@@ -74,14 +69,9 @@ public class Directory extends FSElement{
     }
 
     public LinkedList<File> getFiles(Comparator<FSElement> policy){
-        files.clear();
-        for(FSElement child: children ){
-            if(child.isDirectory() == false && child.isLink() == false){
-                this.files.add((File) child);
-            }
-        }
-        Collections.sort(this.files, policy);
-        return this.files;
+        LinkedList<File> files_Copy = this.getFiles();
+        Collections.sort(files_Copy, policy);
+        return files_Copy;
     }
 
     public int getTotalSize(){
@@ -116,14 +106,9 @@ public class Directory extends FSElement{
     }
 
     public LinkedList<Link> getLink(Comparator<FSElement> policy){
-        links.clear();
-        for(FSElement child: children){
-            if(child.isLink() == true){
-                this.links.add((Link) child);
-            }
-        }
-        Collections.sort(this.files, policy);
-        return this.links;
+        LinkedList<Link> links_Copy = this.getLink();
+        Collections.sort(links_Copy, policy);
+        return links_Copy;
     }
 
     public void accept(FSVisitor v) {
