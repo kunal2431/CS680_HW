@@ -24,7 +24,8 @@ public class Directory extends FSElement{
     }
 
     public LinkedList<FSElement> getChildren(Comparator<FSElement> policy){
-        Collections.sort(this.getChildren(), policy);
+        LinkedList<FSElement> children_Copy = this.getChildren();
+        Collections.sort(children_Copy, policy);
         return children_Copy;
     }
 
@@ -50,7 +51,8 @@ public class Directory extends FSElement{
     }
 
     public LinkedList<Directory> getSubDirectories(Comparator<FSElement> policy){
-        Collections.sort(this.getSubDirectories(), policy);
+        LinkedList<Directory> directories_Copy = this.getSubDirectories();
+        Collections.sort(directories_Copy, policy);
         return directories_Copy;
     }
 
@@ -65,7 +67,8 @@ public class Directory extends FSElement{
     }
 
     public LinkedList<File> getFiles(Comparator<FSElement> policy){
-        Collections.sort(this.getFiles(), policy);
+        LinkedList<File> files_Copy = this.getFiles();
+        Collections.sort(files_Copy, policy);
         return files_Copy;
     }
 
@@ -100,7 +103,8 @@ public class Directory extends FSElement{
     }
 
     public LinkedList<Link> getLink(Comparator<FSElement> policy){
-        Collections.sort(this.getLink(), policy);
+        LinkedList<Link> links_Copy = this.getLink();
+        Collections.sort(links_Copy, policy);
         return links_Copy;
     }
 
