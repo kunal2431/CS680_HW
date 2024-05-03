@@ -14,11 +14,11 @@ public class ComparatorTest{
 
     @BeforeAll
     public static void setUpCar(){
-        cars.add(new Car("Supra","Toyota", 24, 2019, 65000));
-        cars.add(new Car("GTR", "Nissan", 15, 2017, 45500));
-        cars.add(new Car( "Q8", "Audi",10, 2023, 45000));
-        cars.add(new Car( "CX5", "Mazda", 24, 2020, 47000));
-        cars.add(new Car( "Y", "Tesla", 24, 2019, 48000));
+        cars.add(new Car("Supra","Toyota", 2400, 2019, 65000));
+        cars.add(new Car("GTR", "Nissan", 1500, 2017, 45500));
+        cars.add(new Car( "Q8", "Audi", 1000, 2023, 45000));
+        cars.add(new Car( "CX5", "Mazda", 2400, 2020, 47000));
+        cars.add(new Car( "Y", "Tesla", 2400, 2019, 48000));
     }
 
     @Test
@@ -33,7 +33,7 @@ public class ComparatorTest{
     }
 
     @Test
-    //Test Case 1: Functional Test: Verify YearComparator
+    //Test Case 2: Functional Test: Verify YearComparator
     public void verifyYearComparator(){
         Collections.sort(cars, new YearComparator());
         assertEquals("Audi", cars.get(0).getMake());
@@ -44,7 +44,7 @@ public class ComparatorTest{
     }
 
     @Test
-    //Test Case 1: Functional Test: Verify MileageComparator
+    //Test Case 3: Functional Test: Verify MileageComparator
     public void verifyMileageComparator(){
         Collections.sort(cars, new MileageComparator());
         assertEquals("Audi", cars.get(0).getMake());
@@ -56,7 +56,7 @@ public class ComparatorTest{
 
 
     @Test
-    //Test Case 1: Functional Test: Verify ParetoComparator
+    //Test Case 4: Functional Test: Verify ParetoComparator
     public void verifyParetoComparator(){
         for(Car c: cars){
             c.setDominationCount(cars); }
