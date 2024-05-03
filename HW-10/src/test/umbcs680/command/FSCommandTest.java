@@ -49,9 +49,9 @@ public class FSCommandTest{
         int dirNum = actual.get(0);
         int fileNum = actual.get(1);
         int linkNum = actual.get(2);
-        assertEquals(dirNum, 4);
-        assertEquals(fileNum, 5);
-        assertEquals(linkNum, 1);
+        assertEquals(4, dirNum);
+        assertEquals(5, fileNum);
+        assertEquals(1, linkNum);
     }
 
     @Test
@@ -59,11 +59,13 @@ public class FSCommandTest{
     public void verify_FileCrawling(){
         FileCrawling crawlCmd = new FileCrawling(repo);
         LinkedList<File> actual =  crawlCmd.execute();
+        assertEquals(5, actual.size());
         assertTrue(actual.contains(readme));
         assertTrue(actual.contains(ATest));
 
         crawlCmd.changeCrawlDirectory(src);
         LinkedList<File> actual1 =  crawlCmd.execute();
+        assertEquals(4, actual1.size());
         assertFalse(actual1.contains(readme));
         assertTrue(actual1.contains(ATest));
         assertTrue(actual1.contains(B));
@@ -76,6 +78,7 @@ public class FSCommandTest{
         assertTrue(searchCmd.execute().isEmpty());
 
         searchCmd.changeSearchDirectory(repo);
+        assertEquals(1, searchCmd.execute().size());
         for(File f: searchCmd.execute()){
             assertSame(readme, f);
         }
