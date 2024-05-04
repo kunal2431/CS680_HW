@@ -67,7 +67,7 @@ public class FileTest{
     }
 
     @Test
-    //Test Case 3: Functional Test: Verify file Equality Check for file "B.java"
+    //Test Case 3: Functional Test: Verify file Equality Check for file "BTest.java"
     public void verifyFileEqualityCheck_BTest_java(){
         String[] expected = {"BTest.java", "12", String.valueOf(currentTime)};
         assertTrue(BTest instanceof File);
