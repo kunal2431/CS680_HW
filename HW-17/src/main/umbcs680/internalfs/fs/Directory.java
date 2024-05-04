@@ -32,6 +32,7 @@ public class Directory extends FSElement{
     public void appendChild(FSElement child){
         this.children.add(child);
         child.setParent(this);
+        Collections.sort(this.children, AlphabeticalComparator);
     }
 
     public int countChildren(){
