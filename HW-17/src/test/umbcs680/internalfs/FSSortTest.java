@@ -48,20 +48,26 @@ public class FSSortTest{
     //Test Case 1: Functional Test: Verify AlphabeticalComparator implementation
     public void verify_AlphabeticalComparator(){
         Comparator<FSElement> AlphabeticalComparator = (FSElement fs1, FSElement fs2)->{return fs1.getName().compareTo(fs2.getName());};
+
         LinkedList<FSElement> fsElements = main.getChildren();
         Collections.sort(fsElements, AlphabeticalComparator);
         assertEquals("A.java", fsElements.get(0).getName());
         assertEquals("B.java", fsElements.get(1).getName());
 
-        LinkedList<FSElement> fsElements1 = test.getChildren();
-        Collections.sort(fsElements1, AlphabeticalComparator);
-        assertEquals("ATest.java", fsElements1.get(0).getName());
-        assertEquals("BTest.java", fsElements1.get(1).getName());
-        assertEquals("rm.md", fsElements1.get(2).getName());
+        LinkedList<FSElement> fsElements1 = main.getChildren(AlphabeticalComparator);
+        assertEquals("A.java", fsElements1.get(0).getName());
+        assertEquals("B.java", fsElements1.get(1).getName());
 
         LinkedList<File> files = test.getFiles(AlphabeticalComparator);
         assertEquals("ATest.java", files.get(0).getName());
         assertEquals("BTest.java", files.get(1).getName());
+
+        LinkedList<Directory> dir = src.getSubDirectories(AlphabeticalComparator);
+        assertEquals("main", dir.get(0).getName());
+        assertEquals("test", dir.get(1).getName());
+
+        LinkedList<Link> lin = test.getLink(AlphabeticalComparator);
+        assertEquals("rm.md", lin.get(0).getName());
     }
 
     @Test
@@ -73,15 +79,20 @@ public class FSSortTest{
         assertEquals("B.java", fsElements.get(0).getName());
         assertEquals("A.java", fsElements.get(1).getName());
 
-        LinkedList<FSElement> fsElements1 = test.getChildren();
-        Collections.sort(fsElements1, ReverseAlphabeticalComparator);
-        assertEquals("rm.md", fsElements1.get(0).getName());
-        assertEquals("BTest.java", fsElements1.get(1).getName());
-        assertEquals("ATest.java", fsElements1.get(2).getName());
+        LinkedList<FSElement> fsElements1 = main.getChildren(ReverseAlphabeticalComparator);
+        assertEquals("B.java", fsElements1.get(0).getName());
+        assertEquals("A.java", fsElements1.get(1).getName());
+
+        LinkedList<File> files = test.getFiles(ReverseAlphabeticalComparator);
+        assertEquals("BTest.java", files.get(0).getName());
+        assertEquals("ATest.java", files.get(1).getName());
 
         LinkedList<Directory> dir = src.getSubDirectories(ReverseAlphabeticalComparator);
         assertEquals("test", dir.get(0).getName());
         assertEquals("main", dir.get(1).getName());
+
+        LinkedList<Link> lin = test.getLink(ReverseAlphabeticalComparator);
+        assertEquals("rm.md", lin.get(0).getName());
     }
 
     @Test
@@ -97,6 +108,17 @@ public class FSSortTest{
         assertEquals("rm.md", files.get(0).getName());
         assertEquals("BTest.java", files.get(1).getName());
         assertEquals("ATest.java", files.get(2).getName());
+
+        LinkedList<File> files1 = test.getFiles(SizeComparator);
+        assertEquals("BTest.java", files1.get(0).getName());
+        assertEquals("ATest.java", files1.get(1).getName());
+
+        LinkedList<Directory> dir = src.getSubDirectories(SizeComparator);
+        assertEquals("main", dir.get(0).getName());
+        assertEquals("test", dir.get(1).getName());
+
+        LinkedList<Link> lin = test.getLink(SizeComparator);
+        assertEquals("rm.md", lin.get(0).getName());
     }
 
     @Test
@@ -104,9 +126,20 @@ public class FSSortTest{
     public void verify_TimeStampComparator(){
         Comparator<FSElement> TimeStampComparator = (FSElement fs1, FSElement fs2)->{return fs1.getcreationTime().compareTo(fs2.getcreationTime());};
         LinkedList<FSElement> fsElements = main.getChildren(TimeStampComparator);
-        //Collections.sort(fsElements, TimeStampComparator);
+        //Collections.sort(fsElements, new TimeStampComparator());
         assertEquals("A.java", fsElements.get(0).getName());
         assertEquals("B.java", fsElements.get(1).getName());
+
+        LinkedList<File> files1 = main.getFiles(TimeStampComparator);
+        assertEquals("A.java", files1.get(0).getName());
+        assertEquals("B.java", files1.get(1).getName());
+
+        LinkedList<Directory> dir = src.getSubDirectories(TimeStampComparator);
+        assertEquals("main", dir.get(0).getName());
+        assertEquals("test", dir.get(1).getName());
+
+        LinkedList<Link> lin = test.getLink(TimeStampComparator);
+        assertEquals("rm.md", lin.get(0).getName());
     }
 
     @Test
@@ -124,6 +157,9 @@ public class FSSortTest{
         LinkedList<Directory> dir = src.getSubDirectories();
         assertEquals("main", dir.get(0).getName());
         assertEquals("test", dir.get(1).getName());
+
+        LinkedList<Link> lin = test.getLink();
+        assertEquals("rm.md", lin.get(0).getName());
     }
 
 }
