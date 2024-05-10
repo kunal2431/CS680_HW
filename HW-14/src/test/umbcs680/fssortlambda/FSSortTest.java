@@ -126,7 +126,6 @@ public class FSSortTest{
     public void verify_TimeStampComparator(){
         Comparator<FSElement> TimeStampComparator = (FSElement fs1, FSElement fs2)->{return fs1.getcreationTime().compareTo(fs2.getcreationTime());};
         LinkedList<FSElement> fsElements = main.getChildren(TimeStampComparator);
-        //Collections.sort(fsElements, new TimeStampComparator());
         assertEquals("A.java", fsElements.get(0).getName());
         assertEquals("B.java", fsElements.get(1).getName());
 
