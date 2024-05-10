@@ -52,16 +52,22 @@ public class FSSortTest{
         assertEquals("A.java", fsElements.get(0).getName());
         assertEquals("B.java", fsElements.get(1).getName());
 
-        LinkedList<FSElement> fsElements1 = test.getChildren();
-        Collections.sort(fsElements1, new AlphabeticalComparator());
-        assertEquals("ATest.java", fsElements1.get(0).getName());
-        assertEquals("BTest.java", fsElements1.get(1).getName());
-        assertEquals("rm.md", fsElements1.get(2).getName());
-
         AlphabeticalComparator cut = new AlphabeticalComparator();
+        LinkedList<FSElement> fsElements1 = main.getChildren(cut);
+        Collections.sort(fsElements, new AlphabeticalComparator());
+        assertEquals("A.java", fsElements1.get(0).getName());
+        assertEquals("B.java", fsElements1.get(1).getName());
+
         LinkedList<File> files = test.getFiles(cut);
         assertEquals("ATest.java", files.get(0).getName());
         assertEquals("BTest.java", files.get(1).getName());
+
+        LinkedList<Directory> dir = src.getSubDirectories(cut);
+        assertEquals("main", dir.get(0).getName());
+        assertEquals("test", dir.get(1).getName());
+
+        LinkedList<Link> lin = test.getLink(cut);
+        assertEquals("rm.md", lin.get(0).getName());
     }
 
     @Test
@@ -72,16 +78,21 @@ public class FSSortTest{
         assertEquals("B.java", fsElements.get(0).getName());
         assertEquals("A.java", fsElements.get(1).getName());
 
-        LinkedList<FSElement> fsElements1 = test.getChildren();
-        Collections.sort(fsElements1, new ReverseAlphabeticalComparator());
-        assertEquals("rm.md", fsElements1.get(0).getName());
-        assertEquals("BTest.java", fsElements1.get(1).getName());
-        assertEquals("ATest.java", fsElements1.get(2).getName());
-
         ReverseAlphabeticalComparator cut = new ReverseAlphabeticalComparator();
+        LinkedList<FSElement> fsElements1 = main.getChildren(cut);
+        assertEquals("B.java", fsElements1.get(0).getName());
+        assertEquals("A.java", fsElements1.get(1).getName());
+
+        LinkedList<File> files = test.getFiles(cut);
+        assertEquals("BTest.java", files.get(0).getName());
+        assertEquals("ATest.java", files.get(1).getName());
+
         LinkedList<Directory> dir = src.getSubDirectories(cut);
         assertEquals("test", dir.get(0).getName());
         assertEquals("main", dir.get(1).getName());
+
+        LinkedList<Link> lin = test.getLink(cut);
+        assertEquals("rm.md", lin.get(0).getName());
     }
 
     @Test
@@ -97,6 +108,17 @@ public class FSSortTest{
         assertEquals("rm.md", files.get(0).getName());
         assertEquals("BTest.java", files.get(1).getName());
         assertEquals("ATest.java", files.get(2).getName());
+
+        LinkedList<File> files1 = test.getFiles(cut);
+        assertEquals("BTest.java", files1.get(0).getName());
+        assertEquals("ATest.java", files1.get(1).getName());
+
+        LinkedList<Directory> dir = src.getSubDirectories(cut);
+        assertEquals("main", dir.get(0).getName());
+        assertEquals("test", dir.get(1).getName());
+
+        LinkedList<Link> lin = test.getLink(cut);
+        assertEquals("rm.md", lin.get(0).getName());
     }
 
     @Test
@@ -107,6 +129,17 @@ public class FSSortTest{
         //Collections.sort(fsElements, new TimeStampComparator());
         assertEquals("A.java", fsElements.get(0).getName());
         assertEquals("B.java", fsElements.get(1).getName());
+
+        LinkedList<File> files1 = main.getFiles(cut);
+        assertEquals("A.java", files1.get(0).getName());
+        assertEquals("B.java", files1.get(1).getName());
+
+        LinkedList<Directory> dir = src.getSubDirectories(cut);
+        assertEquals("main", dir.get(0).getName());
+        assertEquals("test", dir.get(1).getName());
+
+        LinkedList<Link> lin = test.getLink(cut);
+        assertEquals("rm.md", lin.get(0).getName());
     }
 
     @Test
@@ -124,6 +157,9 @@ public class FSSortTest{
         LinkedList<Directory> dir = src.getSubDirectories();
         assertEquals("main", dir.get(0).getName());
         assertEquals("test", dir.get(1).getName());
+
+        LinkedList<Link> lin = test.getLink();
+        assertEquals("rm.md", lin.get(0).getName());
     }
 
 }
