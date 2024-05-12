@@ -31,6 +31,8 @@
 		<javac srcdir="${src.test}" destdir="${bin.test}" includeAntRuntime="no"> 
 			<classpath refid="classpath"/>
 			<include name="umbcs680/transportation/*.java"/>
+			<include name="umbcs680/transportation/ts/*.java"/>
+			<include name="umbcs680/transportation/util/*.java"/>
 		</javac>
 	</target>
 
@@ -40,6 +42,8 @@
 			<testclasses outputdir="${bin.test}">
 				<fileset dir="${bin.test}">
 					<include name="umbcs680/transportation/*Test.class" />
+					<include name="umbcs680/transportation/ts/*Test.class"/>
+					<include name="umbcs680/transportation/util/*Test.class"/>
 				</fileset>
 	        </testclasses>
 			<listener type="legacy-plain" sendSysOut="true" />
