@@ -1,6 +1,5 @@
 package umbcs680.fssortlambda.fs;
 import umbcs680.fssortlambda.TestFixtureInitializer;
-import umbcs680.fssortlambda.fs.*;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
