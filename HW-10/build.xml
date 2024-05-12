@@ -44,9 +44,9 @@
 			<testclasses outputdir="${bin.test}">
 				<fileset dir="${bin.test}">
 					<include name="umbcs680/command/*.class"/>
-					<include name="umbcs680/command/fs/*.class"/>
-					<include name="umbcs680/command/util/*.class"/>
-					<include name="umbcs680/command/cmds/*.class"/>
+					<include name="umbcs680/command/fs/*Test.class"/>
+					<include name="umbcs680/command/util/*Test.class"/>
+					<include name="umbcs680/command/cmds/*Test.class"/>
 				</fileset>
 	        </testclasses>
 			<listener type="legacy-plain" sendSysOut="true" />
