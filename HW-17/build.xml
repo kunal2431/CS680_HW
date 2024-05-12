@@ -28,10 +28,15 @@
 			<include name="umbcs680/internalfs/fs/*.java"/>
 			<include name="umbcs680/internalfs/util/*.java"/>
 			<include name="umbcs680/internalfs/cmds/*.java"/>
+			<include name="umbcs680/internalfs/sort/*.java"/>
 		</javac>
 		<javac srcdir="${src.test}" destdir="${bin.test}" includeAntRuntime="no"> 
 			<classpath refid="classpath"/>
 			<include name="umbcs680/internalfs/*.java"/>
+			<include name="umbcs680/internalfs/fs/*.java"/>
+			<include name="umbcs680/internalfs/util/*.java"/>
+			<include name="umbcs680/internalfs/cmds/*.java"/>
+			<include name="umbcs680/internalfs/sort/*.java"/>
 		</javac>
 	</target>
 
@@ -40,7 +45,11 @@
 			<classpath refid="classpath" />
 			<testclasses outputdir="${bin.test}">
 				<fileset dir="${bin.test}">
-					<include name="umbcs680/internalfs/*Test.class" />
+					<include name="umbcs680/internalfs/*Test.class"/>
+					<include name="umbcs680/internalfs/fs/*Test.class"/>
+					<include name="umbcs680/internalfs/util/*Test.class"/>
+					<include name="umbcs680/internalfs/cmds/*Test.class"/>
+					<include name="umbcs680/internalfs/sort/*Test.class"/>
 				</fileset>
 	        </testclasses>
 			<listener type="legacy-plain" sendSysOut="true" />
