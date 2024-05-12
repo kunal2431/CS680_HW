@@ -3,7 +3,6 @@ import umbcs680.fssortlambda.TestFixtureInitializer;
 
 import umbcs680.fssortlambda.fs.*;
 import umbcs680.fssortlambda.util.*;
-import umbcs680.fssortlambda.cmds.*;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
