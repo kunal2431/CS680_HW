@@ -32,6 +32,10 @@
 		<javac srcdir="${src.test}" destdir="${bin.test}" includeAntRuntime="no"> 
 			<classpath refid="classpath"/>
 			<include name="umbcs680/fssortlambda/*.java"/>
+			<include name="umbcs680/fssortlambda/fs/*.java"/>
+			<include name="umbcs680/fssortlambda/util/*.java"/>
+			<include name="umbcs680/fssortlambda/cmds/*.java"/>
+			<include name="umbcs680/fssortlambda/sort/*.java"/>
 		</javac>
 	</target>
 
@@ -40,7 +44,10 @@
 			<classpath refid="classpath" />
 			<testclasses outputdir="${bin.test}">
 				<fileset dir="${bin.test}">
-					<include name="umbcs680/fssortlambda/*Test.class" />
+					<include name="umbcs680/fssortlambda/fs/*Test.class"/>
+					<include name="umbcs680/fssortlambda/util/*Test.class"/>
+					<include name="umbcs680/fssortlambda/cmds/*Test.class"/>
+					<include name="umbcs680/fssortlambda/sort/*Test.class"/>
 				</fileset>
 	        </testclasses>
 			<listener type="legacy-plain" sendSysOut="true" />
